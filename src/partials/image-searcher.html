@@ -1,7 +1,15 @@
 <section class="gallery">
   <div class="header">
-    <input type="text" name="searcher" class="header__input" placeholder="Type your request"/>
+    <form class="header__form-group js-search-form">
+      <input type="text" name="searchQuery" class="header__input js-input" autocomplete="off" placeholder="Search images..." />
+      <button type="submit" class="header__button">
+        <svg class="header__icon" width="32" height="22">
+          <use href="./img/icons.svg#icon-search"></use>
+        </svg>
+      </button>
+    </form>
   </div>
 
   <div class="gallery__list js-list"></div>
+  <button type="button" class="load-more hidden js-load-more">Load more</button>
 </section>
