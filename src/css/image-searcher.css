@@ -14,7 +14,7 @@
   font-size: 16px;
   text-align: center;
   border-radius: 4px;
-  border: 1px solid transparent;
+  border: 1px solid #7f00b1;
 }
 
 .header__form-group {
@@ -59,7 +59,7 @@
   justify-content: space-between;
   width: calc((100% - 60px) / 4);
   box-shadow: 1px 2px 1px 0px rgba(0,0,0,0.3);
-  transition: box-shadow .3s cubic-bezier(.05,.73,.96,.48);
+  transition: box-shadow .3s ease;
 }
 .photo-card:hover,
 .photo-card:focus {
@@ -106,4 +106,10 @@
   background-color: #7f00b1;
   border: none;
   border-radius: 4px;
+  transition: box-shadow .3s ease;
+}
+
+.load-more:hover,
+.load-more:focus {
+  box-shadow: 3px 6px 12px 0px rgba(0,0,0,0.3);
 }

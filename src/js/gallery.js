@@ -60,7 +60,7 @@ async function handleChange(e) {
   refs.gallery.innerHTML = '';
   refs.loadMoreButton.classList.add('hidden');
 
-  const query = e.target.elements.searchQuery.value;
+  const query = e.target.elements.searchQuery.value.trim();
   const { data } = await fetchImages({ query });
 
   if (!data?.hits.length)
