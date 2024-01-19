@@ -9,24 +9,27 @@
     <script type="module" crossorigin src="/goit-advancedjs-hw-04/commonHelpers.js"></script>
     <link rel="modulepreload" crossorigin href="/goit-advancedjs-hw-04/assets/vendor-bad0427b.js">
     <link rel="stylesheet" href="/goit-advancedjs-hw-04/assets/vendor-eb6030bc.css">
-    <link rel="stylesheet" href="/goit-advancedjs-hw-04/assets/index-da005fde.css">
+    <link rel="stylesheet" href="/goit-advancedjs-hw-04/assets/index-4a99c1b5.css">
   </head>
   <body>
     <!-- Loads the specified .html file -->
-    <section class="gallery">
-  <div class="header">
-    <form class="header__form-group js-search-form">
-      <input type="text" name="searchQuery" class="header__input js-input" autocomplete="off" placeholder="Search images..." />
-      <button type="submit" class="header__button">
-        <svg class="header__icon" width="32" height="22">
-          <use href="/goit-advancedjs-hw-04/assets/icons-caea985e.svg#icon-search"></use>
-        </svg>
-      </button>
-    </form>
-  </div>
+    <section class="container">
+  <div class="gallery">
+    <div class="header">
+      <form class="header__form-group js-search-form">
+        <input type="text" name="searchQuery" class="header__input js-input" autocomplete="off"
+          placeholder="Search images..." />
+        <button type="submit" class="header__button">
+          <svg class="header__icon" width="32" height="22">
+            <use href="/goit-advancedjs-hw-04/assets/icons-caea985e.svg#icon-search"></use>
+          </svg>
+        </button>
+      </form>
+    </div>
 
-  <div class="gallery__list js-list"></div>
-  <button type="button" class="load-more hidden js-load-more">Load more</button>
+    <div class="gallery__list js-list"></div>
+    <button type="button" class="load-more hidden js-load-more">Load more</button>
+  </div>
 </section>
 
     
