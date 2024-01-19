@@ -34,7 +34,7 @@ function renderGallery(data) {
       }) =>
         `<a class="photo-card" aria-role="button" href="${largeImageURL}">
           <div class="card-thumb">
-            <img src="${webformatURL}" class="card-image" alt="${tags}" loading="lazy" />
+            <img src="${webformatURL}" class="card-image" alt="${tags}" height="250" loading="lazy" />
           </div>
           <div class="info">
             <p class="info-item">

@@ -71,6 +71,7 @@
 .card-image {
   object-fit: cover;
   height: 100%;
+  min-height: 250px;
 }
 
 .info {
