@@ -7,24 +7,27 @@
     <title>Vanilla App Template</title>
     
     <script type="module" crossorigin src="/goit-advancedjs-hw-04/commonHelpers.js"></script>
-    <link rel="stylesheet" href="/goit-advancedjs-hw-04/assets/index-10c40100.css">
+    <link rel="modulepreload" crossorigin href="/goit-advancedjs-hw-04/assets/vendor-bad0427b.js">
+    <link rel="stylesheet" href="/goit-advancedjs-hw-04/assets/vendor-eb6030bc.css">
+    <link rel="stylesheet" href="/goit-advancedjs-hw-04/assets/index-ed3f3655.css">
   </head>
   <body>
-    <section>
-      <h1>Lorem ipsum dolor sit amet.</h1>
-      <!-- Path to images as from index.html file -->
-      <img src="/goit-advancedjs-hw-04/assets/javascript-8dac5379.svg" alt="" />
-    </section>
-
     <!-- Loads the specified .html file -->
     <section class="gallery">
   <div class="header">
-    <input type="text" name="searcher" class="header__input" placeholder="Type your request"/>
+    <form class="header__form-group js-search-form">
+      <input type="text" name="searchQuery" class="header__input js-input" autocomplete="off" placeholder="Search images..." />
+      <button type="submit" class="header__button">
+        <svg class="header__icon" width="32" height="22">
+          <use href="/goit-advancedjs-hw-04/assets/icons-caea985e.svg#icon-search"></use>
+        </svg>
+      </button>
+    </form>
   </div>
 
   <div class="gallery__list js-list"></div>
+  <button type="button" class="load-more hidden js-load-more">Load more</button>
 </section>
-
 
     
   </body>
