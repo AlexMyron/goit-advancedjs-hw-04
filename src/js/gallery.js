@@ -12,7 +12,7 @@ const refs = {
 let lightbox, cardHeight;
 
 iziToast.settings({
-  timeout: 5000,
+  timeout: 3000,
   resetOnHover: true,
   icon: 'material-icons',
   transitionIn: 'flipInX',
@@ -61,47 +61,57 @@ async function handleChange(e) {
   refs.loadMoreButton.classList.add('hidden');
 
   const query = e.target.elements.searchQuery.value.trim();
-  const { data } = await fetchImages({ query });
+  const {
+    data: { totalHits, hits },
+  } = await fetchImages({ query });
 
-  if (!data?.hits.length)
+  if (!query) return;
+
+  if (!hits.length)
     return iziToast.error({
       title: 'Error',
       message:
-        'Sorry, there are no images matching your search query. Please try again.',
+        `Sorry, there are no images matching your search query "${query}". Please try again.`,
     });
 
   iziToast.success({
-    message: `Hooray! We found ${data.totalHits} totalHits images`,
+    message: `Hooray! We found ${totalHits} totalHits images`,
     messageColor: '#fff',
     backgroundColor: '#c139f6',
   });
 
-  refs.gallery.insertAdjacentHTML('beforeend', renderGallery(data.hits));
+  refs.gallery.insertAdjacentHTML('beforeend', renderGallery(hits));
   const { height } = refs.gallery.firstElementChild.getBoundingClientRect();
   cardHeight = height;
 
-  refs.loadMoreButton.classList.remove('hidden');
+  checkIsLastPage(totalHits);
   lightbox = new SimpleLightbox('.js-list a');
 }
 
 async function handleLoadMoreButton() {
-  const { data } = await fetchImages({ query: null, isLoadMore: true });
+  const {
+    data: { totalHits, hits },
+  } = await fetchImages({ query: null, isLoadMore: true });
 
-  if (data.totalHits <= pageNumber * PER_PAGE) {
-    refs.loadMoreButton.classList.add('hidden');
-    return iziToast.error({
-      title: 'Error',
-      message: "We're sorry, but you've reached the end of search results.",
-    });
-  }
+  checkIsLastPage(totalHits);
 
   lightbox.destroy();
-  refs.gallery.insertAdjacentHTML('beforeend', renderGallery(data.hits));
+  refs.gallery.insertAdjacentHTML('beforeend', renderGallery(hits));
   lightbox = new SimpleLightbox('.js-list a');
 
   window.scrollBy({
     top: cardHeight * 2,
     behavior: 'smooth',
+  });
+}
+
+function checkIsLastPage(totalHits) {
+  const isLastPage = Math.ceil(totalHits / PER_PAGE) === pageNumber;
+
+  refs.loadMoreButton.classList.toggle('hidden', isLastPage);
+
+  isLastPage && iziToast.error({
+    message: "We're sorry, but you've reached the end of search results.",
   });
 }
 

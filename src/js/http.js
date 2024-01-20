@@ -14,7 +14,7 @@ axios.defaults.params = {
 };
 
 async function fetchImages({ query, isLoadMore = false }) {
-  pageNumber = isLoadMore ? pageNumber + 1 : 1
+  pageNumber = isLoadMore ? pageNumber + 1 : 1;
 
   queryParam = query ?? queryParam;
 
