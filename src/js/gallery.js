@@ -61,17 +61,17 @@ async function handleChange(e) {
   refs.loadMoreButton.classList.add('hidden');
 
   const query = e.target.elements.searchQuery.value.trim();
+
+  if (!query) return;
+
   const {
     data: { totalHits, hits },
   } = await fetchImages({ query });
 
-  if (!query) return;
-
   if (!hits.length)
     return iziToast.error({
       title: 'Error',
-      message:
-        `Sorry, there are no images matching your search query "${query}". Please try again.`,
+      message: `Sorry, there are no images matching your search query "${query}". Please try again.`,
     });
 
   iziToast.success({
@@ -110,9 +110,10 @@ function checkIsLastPage(totalHits) {
 
   refs.loadMoreButton.classList.toggle('hidden', isLastPage);
 
-  isLastPage && iziToast.error({
-    message: "We're sorry, but you've reached the end of search results.",
-  });
+  isLastPage &&
+    iziToast.error({
+      message: "We're sorry, but you've reached the end of search results.",
+    });
 }
 
 refs.form.addEventListener('submit', handleChange);
